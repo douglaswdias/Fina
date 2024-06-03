@@ -1,0 +1,16 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Fina.Core.Requests.Transactions;
+
+public class UpdateTransactionRequest : Request
+{
+    public long Id { get; set; }
+    [Required(ErrorMessage = "Valor inválido")]
+    public decimal Amount { get; set; }
+
+    [Required(ErrorMessage = "Categoria inválida")]
+    public long CategoryId { get; set; }
+
+    [Required(ErrorMessage = "Data inválida")]
+    public DateTime? PaidOrReceivedAt { get; set; }
+}
