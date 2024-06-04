@@ -34,7 +34,7 @@ public class TransactionsHandler(AppDbContext context) : ITransactionHandler
 
             return new Response<Transaction?>(transaction, 201, "Transação efetuada");
         }
-        catch (Exception e)
+        catch
         {
             return new Response<Transaction?>(null, 500, "Erro ao efetuar transação");
         }
@@ -103,10 +103,9 @@ public class TransactionsHandler(AppDbContext context) : ITransactionHandler
                 ? new Response<Transaction?>(null, 404, "Transação não encontrada")
                 : new Response<Transaction?>(transaction);
         }
-        catch (Exception e)
+        catch
         {
-            Console.WriteLine(e);
-            throw;
+            return new Response<Transaction?>(null, 500, "Erro ao buscar transação");
         }
     }
 
@@ -117,7 +116,7 @@ public class TransactionsHandler(AppDbContext context) : ITransactionHandler
             request.StartDate ??= DateTime.UtcNow.GetFirstDay();
             request.EndDate ??= DateTime.UtcNow.GetLastDay();
         }
-        catch (Exception e)
+        catch
         {
             return new PagedResponse<List<Transaction?>>(null, 500, "Não foi possível determinar a data");
         }
