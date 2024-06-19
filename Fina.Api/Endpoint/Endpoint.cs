@@ -1,6 +1,6 @@
 ﻿using Fina.Api.Commom.Api;
-using Fina.Api.Endpoinst.Transactions;
 using Fina.Api.Endpoint.Categories;
+using Fina.Api.Endpoint.Transactions;
 
 namespace Fina.Api.Endpoint;
 
@@ -24,7 +24,6 @@ public static class Endpoint
         
         endpoints.MapGroup("v1/transactions")
             .WithTags("Transactions")
-            .RequireAuthorization()
             .MapEndpoint<CreateTransactionEndpoint>()
             .MapEndpoint<UpdateTransactionEndpoint>()
             .MapEndpoint<DeleteTransactionEndpoint>()

@@ -6,7 +6,7 @@ using Fina.Core.Requests.Transactions;
 using Fina.Core.Responses;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Fina.Api.Endpoinst.Transactions;
+namespace Fina.Api.Endpoint.Transactions;
 
 public class GetTransactionByDateEndpoint : IEndpoint
 {

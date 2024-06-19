@@ -4,7 +4,7 @@ using Fina.Core.Models;
 using Fina.Core.Requests.Transactions;
 using Fina.Core.Responses;
 
-namespace Fina.Api.Endpoinst.Transactions;
+namespace Fina.Api.Endpoint.Transactions;
 
 public class CreateTransactionEndpoint : IEndpoint
 {
@@ -21,9 +21,9 @@ public class CreateTransactionEndpoint : IEndpoint
         CreateTransactionRequest request)
     {
         request.UserId = ApiConfiguration.UserId;
-        var result = await handler.CreateAsync(request);
-        return result.IsSuccess
-            ? TypedResults.Created($"/{result.Data?.Id}", result)
-            : TypedResults.BadRequest(result.Data);
+        var response = await handler.CreateAsync(request);
+        return response.IsSuccess
+            ? TypedResults.Created($"v1/transactions/{response.Data?.Id}", response)
+            : TypedResults.BadRequest(response);
     }
 }
